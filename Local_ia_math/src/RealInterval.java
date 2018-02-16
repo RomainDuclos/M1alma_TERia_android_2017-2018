@@ -79,6 +79,15 @@ public class RealInterval implements Cloneable{
     return this.toString2();
   }
 
+  public void aff(){
+    System.out.println(this.toString1());
+  }
+
+  public String b_toString()
+  {
+    return this.toString1();
+  }
+
   private String toString1(){
     return(new String(
         "[" +
