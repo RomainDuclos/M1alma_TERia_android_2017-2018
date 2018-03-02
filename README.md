@@ -5,4 +5,5 @@ Dépot pour mon travail/code sur le TER de Master 1 ALMA 2017-2018 : Arithmétiq
 -> Pour le moment : 
    - Code java avec ia_math, manipulation ari intervalles.
    - Code python avec pyinterval, comparaison avec ia_math.
-   - Code ia_math avec Android Studio
+   - Le test des arrondis avec Java
+   - SOON : code android studio
