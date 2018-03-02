@@ -31,5 +31,21 @@ public class Main
      
      e = IAMath.midpoint(d);
      System.out.println("midpoint(d)= "+ e.b_toString());
+
+     RealInterval t = IAMath.add(new RealInterval(-1,1),new RealInterval(2,2));
+     System.out.println("test [-1,1] + 2 = " + t.b_toString());
+
+     RealInterval j = IAMath.my_add(a,b);
+     System.out.println("test my_add(a,b) = " + j.b_toString());
+
+     j = IAMath.my_addB(new RealInterval(5.1,6.1), new RealInterval(1.1,2.1));
+     System.out.println("test my_add([5.1,6.1],[1.1,2.1] = " + j.b_toString());
+     
+     double tes = 5.1 + 1.1;
+     System.out.println("5.1 + 1.1 = " + tes);
+     tes = tes - 5.1;
+     System.out.println("6.199999 - 5.1 = " + tes);
+    // System.out.println(Math.nextDown(tes));
+     System.out.println(5.1+1.1);
   }
 }

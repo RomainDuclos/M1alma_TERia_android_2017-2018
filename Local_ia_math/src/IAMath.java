@@ -40,6 +40,61 @@ public class IAMath
       new RealInterval(Math.min(x.lo,y.lo),Math.max(x.hi,y.hi));
   }
 
+  public static double addDn(double x, double y) {
+        double r = x + y;
+        return r - x > y || r - y > x ? nextDn(r) : r;
+  }
+
+  public static double addUp(double x, double y) {
+        double r = x + y;
+        return r - x < y || r - y < x ? nextUp(r) : r;
+  }
+
+  public static double nextDn(double x) {
+        return -Math.nextUp(-x);
+  }
+
+  public static double nextUp(double x) {
+        return Math.nextUp(x);
+  }
+
+  public static RealInterval my_add(RealInterval x, RealInterval y)
+  {
+    RealInterval z = new RealInterval();
+   /* z.lo = addDn(x.lo,y.lo);
+    z.hi = addUp(x.hi,y.hi);
+    return(z);*/
+
+    //C'est pas propre mais j'essaye une truc
+    z.lo = x.lo + y.lo;
+    z.hi = x.hi + y.hi;
+    if(z.lo - x.lo < y.lo)
+    {
+      Math.nextUp(z.lo);
+    }
+    else if(z.lo - x.lo > y.lo)
+    {
+      Math.nextDown(z.lo);
+    }
+     if(z.hi - x.hi < y.hi)
+    {
+      Math.nextUp(z.hi);
+    }
+    else if(z.hi - x.hi > y.hi)
+    {
+      Math.nextDown(z.hi);
+    }
+    return z;
+  }
+
+  public static RealInterval my_addB(RealInterval x, RealInterval y)
+  {
+    RealInterval z = new RealInterval();
+    z.lo = addDn(x.lo,y.lo);
+    z.hi = addUp(x.hi,y.hi);
+    return(z);
+  }
+
   public static RealInterval add(RealInterval x, RealInterval y) {
     RealInterval z = new RealInterval();
     z.lo = RMath.add_lo(x.lo,y.lo);
