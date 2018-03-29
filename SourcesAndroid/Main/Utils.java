@@ -245,7 +245,15 @@ public class Utils {
             return floor64.pow(ExtendedRational.valueOf(x), ExtendedRational.valueOf(y)).doubleValue();
         }
         */
-        return nextDn((Math.pow(x, y)));
+       // return nextDn((Math.pow(x, y)));
+
+        //Je pense que c'est toujours faux mais je test
+        double r = Math.pow(x,y);
+        if(Math.pow(r,1/y) > x)
+        {
+            return nextDn(r);
+        }
+        return r;
     }
 
     public static double powUp(double x, double y) {
@@ -262,7 +270,15 @@ public class Utils {
         }
         */
 
-        return nextUp((Math.pow(x, y)));
+        //return nextUp((Math.pow(x, y)));
+
+        //Je pense que c'est toujours faux mais je test
+        double r = Math.pow(x,y);
+        if(Math.pow(r,1/y) < x)
+        {
+            return nextUp(r);
+        }
+        return r;
     }
 
     public static double pownDn(double x, int p) {
@@ -372,22 +388,45 @@ public class Utils {
 
     public static double expDn(double x)
     {
-        return -Math.nextUp(-(Math.exp(x)));
+        if(Math.log(Math.exp(x)) > x)
+        {
+            return nextDn((Math.exp(x)));
+        }
+        return Math.exp(x);
+
+        //return -Math.nextUp(-(Math.exp(x)));
     }
 
     public static double expUp(double x)
     {
-        return Math.nextUp(Math.exp(x));
+        if(Math.log(Math.exp(x)) < x)
+        {
+            return nextUp((Math.exp(x)));
+        }
+        return Math.exp(x);
+
+        //return Math.nextUp(Math.exp(x));
     }
 
     public static double logDn(double x)
     {
-        return -Math.nextUp(-(Math.log(x)));
+
+        if(Math.exp(Math.log(x)) > x)
+        {
+            return nextDn((Math.log(x)));
+        }
+        return Math.log(x);
+        //return -Math.nextUp(-(Math.log(x)));
     }
 
     public static double logUp(double x)
     {
-        return Math.nextUp(Math.log(x));
+        if(Math.exp(Math.log(x)) < x)
+        {
+            return nextUp((Math.log(x)));
+        }
+        return Math.log(x);
+        //return Math.nextUp(Math.log(x));
     }
 
     public static double sinDn(double x)
@@ -402,7 +441,7 @@ public class Utils {
 
     public static double cosDn(double x)
     {
-        return -Math.nextUp(-(Math.cos(x)));
+        return nextDn(Math.cos(x));
     }
 
     public static double cosUp(double x)
@@ -412,12 +451,22 @@ public class Utils {
 
     public static double tanDn(double x)
     {
-        return -Math.nextUp(-(Math.tan(x)));
+        if(Math.tan(Math.atan(x)) < x)
+        {
+            return nextDn((Math.tan(x)));
+        }
+        return Math.tan(x);
+        //return nextUp(Math.tan(x));
     }
 
     public static double tanUp(double x)
     {
-        return Math.nextUp(Math.tan(x));
+        if(Math.tan(Math.atan(x)) > x)
+        {
+            return nextUp((Math.tan(x)));
+        }
+        return Math.tan(x);
+        //return Math.nextUp(Math.tan(x));
     }
 
     public static double asinDn(double x)

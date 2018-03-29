@@ -322,7 +322,7 @@ public class IMaths {
             double u = Utils.expUp(xs);
             //double l = -Math.nextUp(-(Math.exp(xi)));
             //double u = Math.nextUp(Math.exp(xs));
-            return (new Interval(xi, xs));
+            return (new Interval(l, u));
         } else {
             //Intervalle vide pour moi
             return new Interval(1.0,0.0);
@@ -364,7 +364,7 @@ public class IMaths {
                 return (new Interval(l, u));
             }
 
-            return x;
+            return x; // -> faux, je sais pas pourquoi j'ai mis ça
         } else {
             //Intervalle vide pour moi
             return new Interval(1.0,0.0);
@@ -380,12 +380,13 @@ public class IMaths {
 
                 //double l = xs == 0 ? 1 : Math.max(-1, -Math.nextUp(-Math.cos(xs)));
                 //double u = xi == 0 ? 1 : Math.min(1, Math.nextUp(Math.cos(xi)));
-                double l = xs == 0 ? 1 : Math.max(-1, Utils.cosDn(xs));
-                double u = xi == 0 ? 1 : Math.min(1, Utils.cosUp(xi));
+                double l = xs == 0 ? 1 : Math.max(-1.0, Utils.cosDn(xs));
+                double u = xi == 0 ? 1 : Math.min(1.0, Utils.cosUp(xi));
                 return (new Interval(l, u));
             }
 
-            return x;
+            //return x; // -> faux, je sais pas pourquoi j'ai mis ça
+            return new Interval(Math.cos(xi),Math.cos(xs));
         } else {
             //Intervalle vide pour moi
             return new Interval(1.0,0.0);
@@ -406,7 +407,7 @@ public class IMaths {
                 return (new Interval(l, u));
             }
 
-            return x;
+            return x; // -> faux, je sais pas pourquoi j'ai mis ça
         } else {
             //Intervalle vide pour moi
             return new Interval(1.0,0.0);
