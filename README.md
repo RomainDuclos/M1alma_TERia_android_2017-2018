@@ -7,3 +7,4 @@ Dépot pour mon travail/code sur le TER de Master 1 ALMA 2017-2018 : Arithmétiq
    - Code python avec pyinterval, comparaison avec ia_math.
    - Le test des arrondis avec Java
    - Le dossier "test" est le projet en entier avec AndroidStudio, il y a les sources et les configs normalement. Je ferai un readme plus tard de quelles config utiliser pour les test ou build l'apk, etc.
+   - J'ai ajouté le code JNI en local pour le test de fesetround (dossier JNIRoudning)
